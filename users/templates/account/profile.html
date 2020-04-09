@@ -1,0 +1,36 @@
+{% extends "core/base.html" %}
+{% block content%}
+<div class="container">
+    <div class="card mt-3" style="max-width: 1100px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                {% if profile.profile_pic %}
+                <img src="{{ profile.profile_pic.url }}" class="card-img" alt="avatar">
+                {% else %}
+                <img src="" class="card-img" alt="avatar">
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ user.username }}</h5>
+                    <p class="card-text">Intro: {{ profile.bio }}</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-8 right">
+            <div class="name-buttons">
+                {% if request.user == user %}
+                <a type="button" class="btn" href="{% url 'users:profile_settings' user.username %}">Edit Profile</a>
+                <a type="button" class="btn" href="{% url 'core:manage_post_list' %}">My Posts</a>
+                <a type="button" class="btn" href="{% url 'core:post_create' %}">Create Post</a>
+                <a type="button" class="btn" class="btn" href="{% url 'users:change-password' %}">ChangePassword</a>
+                <a type="button" class="btn" href="{% url 'users:logout' %}">Logout</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,4 +1,5 @@
 [![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/shyam999/django-blog/blob/master/LICENSE)
+![Django Build](https://github.com/shyam999/Django-blog/workflows/Django%20Build/badge.svg)
 # Django Blog
 
 ## Installation

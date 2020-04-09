@@ -13,3 +13,7 @@ media
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+# pytest #
+.pytest_cache/*
+pytest.ini

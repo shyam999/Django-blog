@@ -1,0 +1,20 @@
+{% extends "core/base.html" %}
+{% block content%}
+<div class="container">
+    <h1>My courses</h1>
+    {% for post in object_list %}
+    <div class="course-info">
+        <h3>{{ post.title }}</h3>
+        <p>
+            <a href="{% url "core:post_edit" post.id %}">Edit</a>
+            <a href="{% url "core:post_delete" post.id %}">Delete</a>
+        </p>
+    </div>
+    {% empty %}
+    <p>You haven't created any courses yet.</p>
+    {% endfor %}
+    <p>
+        <a href="{% url "core:post_create" %}" class="button">Create new course</a>
+    </p>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "core/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mb-5 mb-lg-0 mt-5">
+            <div class="blog_left_sidebar mt-4">
+                {% for post in posts %}
+                <div class="card gedf-card mb-3">
+                    <div class="card-body">
+                        <a class="card-link" href="#">
+                            <h4 class="card-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+                        </a>
+                        <ul class="list-group list-group-horizontal">
+                            <a class="mr-4" href="#"><i class="fa fa-user"></i> {{ post.author }}</a>
+                            <a class="mr-4" href="#"><i class="fa fa-tag"></i> {{ post.category }}</a>
+                            <a href="#"><i class="fa fa-clock-o"></i> {{ post.created_date | date:"F d" }}</a>
+                        </ul>
+                        <p style="font-family: Quicksand, serif; font-size:12.0pt; letter-apcing:1px">{{ post.content|truncatewords:20 }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+                        <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+                        <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-4 mt-5">
+            <div class="blog_right_sidebar mt-4">
+                <aside class="single_sidebar_widget popular_post_widget">
+                    <h4 class="widget_title text-center">Recent Post</h4>
+                    {% for post in posts %}
+                    <ul class="timeline">
+                        <li>
+                            <h6><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h6>
+                            <p style="font-family: Quicksand, serif; font-weight:300 font-size:12.0pt; letter-apcing:1px">{{ post.content|truncatewords:15 }}</p>
+                        </li>
+                    </ul>
+                    {% endfor %}
+                </aside>
+                <aside class="single_sidebar_widget newsletter_widget">
+                    <h4 class="widget_title text-center">Newsletter</h4>
+                        <form method="post" action="#">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <button class="btn btn-warning w-100" type="submit">Subscribe</button>
+                        </form>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

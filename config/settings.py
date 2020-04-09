@@ -1,16 +1,12 @@
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'eucgf++4zb*1eu)0bs89ecq6uo5v^z3fh+ae%piak96r_t=g61'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 INSTALLED_APPS = [
@@ -22,10 +18,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #third-party apps
+    'rest_framework',
     'crispy_forms',
 
     #your custom apps
     'core.apps.CoreConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -83,6 +81,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_PROFILE_MODULE = 'users.UserProfile'
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
@@ -117,3 +116,9 @@ EMAIL_USE_TLS = True
 
 #Crispy templates for form rendering
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = 'core:blog'
+
+LOGOUT_URL = 'users:logout'
+LOGOUT_REDIRECT_URL = 'users:login'

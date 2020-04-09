@@ -24,8 +24,8 @@
             <div class="name-buttons">
                 {% if request.user == user %}
                 <a type="button" class="btn" href="{% url 'users:profile_settings' user.username %}">Edit Profile</a>
-                <a type="button" class="btn" href="{% url 'core:manage_post_list' %}">My Posts</a>
-                <a type="button" class="btn" href="{% url 'core:post_create' %}">Create Post</a>
+                <a type="button" class="btn" href="{% url 'core:manage' %}">My Posts</a>
+                <a type="button" class="btn" href="{% url 'core:create' %}">Create Post</a>
                 <a type="button" class="btn" class="btn" href="{% url 'users:change-password' %}">ChangePassword</a>
                 <a type="button" class="btn" href="{% url 'users:logout' %}">Logout</a>
                 {% endif %}

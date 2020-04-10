@@ -10,7 +10,7 @@
 virtualenv env
 source env/bin/activate
 ```
-**2.Install Repository**
+**2.clone Repository & Install Packages**
 ```sh
 git clone https://github.com/shyam999/DjangoBlog.git
 pip install -r requirements.txt

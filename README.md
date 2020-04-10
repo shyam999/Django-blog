@@ -4,7 +4,6 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/81d44860b4074b8c952303d2b999cb05)](https://app.codacy.com/manual/shyam.acharjya.1/Django-blog_2?utm_source=github.com&utm_medium=referral&utm_content=shyam999/Django-blog&utm_campaign=Badge_Grade_Dashboard)
 [![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/shyam999/django-blog/blob/master/LICENSE)
 # Django Blog
-
 ## Installation
 **1.Setup Virtualenv**
 ```sh
@@ -16,13 +15,10 @@ source env/bin/activate
 git clone https://github.com/shyam999/DjangoBlog.git
 pip install -r requirements.txt
 ```
-**3.Migrate Database**
+**3.Migrate & Start Server**
 ```sh
 python manage.py makemigrations
 python manage.py migrate
-```
-**4.Run Server**
-```sh
 python manage.py runserver
 ```
 

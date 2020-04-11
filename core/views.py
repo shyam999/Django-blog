@@ -13,7 +13,6 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
-
 class OwnerMixin(object):
     def get_queryset(self):
         qs = super(OwnerMixin, self).get_queryset()

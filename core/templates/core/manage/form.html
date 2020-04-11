@@ -2,15 +2,15 @@
 {% load crispy_forms_tags %}
 {% block content%}
 
-<div class="container">
+<div class="container mt-5">
     <h1>
         {% if object %}Edit post "{{ object.title }}"
         {% else %}Create a new blog post{% endif %}
     </h1>
     <form action="." method="post">
-        {{ form|crispy }}
         {% csrf_token %}
-        <p><input type="submit" value="Save course"></p>
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary w-100">Create</button>
     </form>
 </div>
 {% endblock %}

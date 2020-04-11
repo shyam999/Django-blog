@@ -121,4 +121,4 @@ LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'core:blog'
 
 LOGOUT_URL = 'users:logout'
-LOGOUT_REDIRECT_URL = 'users:login'
+LOGOUT_REDIRECT_URL = 'core:blog'

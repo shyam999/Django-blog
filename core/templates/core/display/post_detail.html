@@ -3,12 +3,12 @@
 <div class="container">
     <div class="article-clean mb-4">
         <div class="row">
-            <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
+            <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2 mt-5">
                 <div class="intro">
+                    <img class="img-fluid" src="{{ post.image.url }}" alt="photo">
                     <h1 class="text-center">{{ post.title }}</h1>
                     <p class="text-center"><span class="by">by</span> <a href="#">{{ post.author }}</a><span
-                        class="date">{{ post.created_date | date:"F d" }} </span></p><img class="img-fluid"
-                        src="{{ post.image.url }}" alt="photo">
+                        class="date">{{ post.created_date | date:"F d" }} </span></p>
                 </div>
                 <div class="text">
                     <p>{{ post.content }}</p>

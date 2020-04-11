@@ -13,24 +13,29 @@
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title">{{ user.username }}</h5>
+                    <h5 class="card-title">{{ user.username }}</h5>
                     <p class="card-text">Intro: {{ profile.bio }}</p>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <div class="row">
+                        <div class="col-xs-8 left">
+                            <div class="name-buttons">
+                                {% if request.user == user %}
+                                <a type="button" class="btn"
+                                    href="{% url 'users:profile_settings' user.username %}">Edit
+                                    Profile</a>
+                                <a type="button" class="btn" href="{% url 'core:manage' %}">My Posts</a>
+                                <a type="button" class="btn" href="{% url 'core:create' %}">Create Post</a>
+                                <a type="button" class="btn" class="btn"
+                                    href="{% url 'users:change-password' %}">ChangePassword</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-8 right">
-            <div class="name-buttons">
-                {% if request.user == user %}
-                <a type="button" class="btn" href="{% url 'users:profile_settings' user.username %}">Edit Profile</a>
-                <a type="button" class="btn" href="{% url 'core:manage' %}">My Posts</a>
-                <a type="button" class="btn" href="{% url 'core:create' %}">Create Post</a>
-                <a type="button" class="btn" class="btn" href="{% url 'users:change-password' %}">ChangePassword</a>
-                <a type="button" class="btn" href="{% url 'users:logout' %}">Logout</a>
-                {% endif %}
-            </div>
-        </div>
-    </div>
+
 </div>
 {% endblock %}

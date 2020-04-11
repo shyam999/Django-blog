@@ -6,22 +6,24 @@
         <div class="col-lg-8 mb-5 mb-lg-0 mt-5">
             <div class="blog_left_sidebar mt-4">
                 {% for post in posts %}
-                <div class="card gedf-card mb-3">
-                    <div class="card-body">
-                        <a class="card-link" href="#">
-                            <h4 class="card-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
-                        </a>
-                        <ul class="list-group list-group-horizontal">
-                            <a class="mr-4" href="#"><i class="fa fa-user"></i> {{ post.author }}</a>
-                            <a class="mr-4" href="#"><i class="fa fa-tag"></i> {{ post.category }}</a>
-                            <a href="#"><i class="fa fa-clock-o"></i> {{ post.created_date | date:"F d" }}</a>
-                        </ul>
-                        <p style="font-family: Quicksand, serif; font-size:12.0pt; letter-apcing:1px">{{ post.content|truncatewords:20 }}</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-                        <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                        <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
+                <div class="card mb-3" style="max-width: 740px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                        <img src="{{ post.image.url }}" class="card-img" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ post.title }}</h5>
+                                <p class="card-text">{{ post.content|truncatewords:40 }}</p>
+                                <div class="row">
+                                    <div class="col-md-12 post-header-line">
+                                        <span class="fa fa-user" style="color: #3fd4ff;"></span> by <a href="#">{{ post.author }}</a>
+                                        | <span class="fa fa-calendar" style="color: #3fd4ff;"></span> {{ post.created_date | date:"F d" }}
+                                        | <span class="fa fa-share" style="color: #3fd4ff;"></span><a href="{% url "core:post_share" post.id %}"> Share</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
@@ -30,27 +32,28 @@
         <div class="col-lg-4 mt-5">
             <div class="blog_right_sidebar mt-4">
                 <aside class="single_sidebar_widget popular_post_widget">
-                    <h4 class="widget_title text-center">Recent Post</h4>
+                    <h5 class="widget_title text-center">Recent Post</h5>
                     {% for post in posts %}
                     <ul class="timeline">
                         <li>
                             <h6><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h6>
-                            <p style="font-family: Quicksand, serif; font-weight:300 font-size:12.0pt; letter-apcing:1px">{{ post.content|truncatewords:15 }}</p>
+                            <p
+                                style="font-family: Quicksand, serif; font-weight:300 font-size:12.0pt; letter-apcing:1px">
+                                {{ post.content|truncatewords:15 }}</p>
                         </li>
                     </ul>
                     {% endfor %}
                 </aside>
                 <aside class="single_sidebar_widget newsletter_widget">
-                    <h4 class="widget_title text-center">Newsletter</h4>
-                        <form method="post" action="#">
-                            {% csrf_token %}
-                            {{ form|crispy }}
-                            <button class="btn btn-warning w-100" type="submit">Subscribe</button>
-                        </form>
+                    <h5 class="widget_title text-center">Newsletter</h5>
+                    <form method="post" action="#">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button class="btn btn-warning w-100" type="submit">Subscribe</button>
+                    </form>
                 </aside>
             </div>
         </div>
     </div>
 </div>
 {% endblock %}
-

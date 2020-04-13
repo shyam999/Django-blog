@@ -1,36 +1,25 @@
 {% extends "core/base.html" %}
 {% load crispy_forms_tags %}
+
+{% block link %}
+<form method="get" class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="text" name="q" id="id_q" placeholder="Search" aria-label="Search">
+    <button class="btn btn-primary my-2 my-sm-0 mr-5" type="submit">Search</button>
+</form>
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-lg-8 mb-5 mb-lg-0 mt-5">
-            <div class="blog_left_sidebar mt-4">
-                {% for post in posts %}
-                <div class="card mb-3" style="max-width: 740px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                        <img src="{{ post.image.url }}" class="card-img" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ post.title }}</h5>
-                                <p class="card-text">{{ post.content|truncatewords:40 }}</p>
-                                <div class="row">
-                                    <div class="col-md-12 post-header-line">
-                                        <span class="fa fa-user" style="color: #3fd4ff;"></span> by <a href="#">{{ post.author }}</a>
-                                        | <span class="fa fa-calendar" style="color: #3fd4ff;"></span> {{ post.created_date | date:"F d" }}
-                                        | <span class="fa fa-share" style="color: #3fd4ff;"></span><a href="{% url "core:post_share" post.id %}"> Share</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-        <div class="col-lg-4 mt-5">
-            <div class="blog_right_sidebar mt-4">
+        {% if posts %}
+            {% for post in posts %}
+                {% include 'core/display/blog_post.html' with posts=post %}
+            {% endfor %}
+        {% else %}
+            {% include 'core/display/blog_post.html' with query=query %}
+        {% endif %}
+        <div class="col-lg-4">
+            <div class="blog_right_sidebar">
                 <aside class="single_sidebar_widget popular_post_widget">
                     <h5 class="widget_title text-center">Recent Post</h5>
                     {% for post in posts %}
@@ -56,4 +45,7 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    document.getElementById("id_q").value = "{{query}}"
+</script>
 {% endblock %}

@@ -44,6 +44,10 @@ h5 {
   letter-spacing: 1px;
 }
 
+.blog_right_sidebar {
+  margin-top: -160px;
+}
+
 .popular_post_widget {
   background-color: #ffffff;
   border: 1px solid #ffffff;

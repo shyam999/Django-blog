@@ -1,0 +1,44 @@
+{% if post %}
+<div class="col-lg-8 mb-1 mb-lg-0 mt-5">
+    <div class="blog_left_sidebar mt-4">
+        <div class="card" style="max-width: 740px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="{{ post.image.url }}" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text">{{ post.content|truncatewords:40 }}</p>
+                        <div class="row">
+                            <div class="col-md-12 post-header-line">
+                                <span class="fa fa-user" style="color: #3fd4ff;"></span> by <a
+                                    href="#">{{ post.author }}</a>
+                                | <span class="fa fa-calendar" style="color: #3fd4ff;"></span>
+                                {{ post.created_date | date:"F d" }}
+                                | <span class="fa fa-share" style="color: #3fd4ff;"></span><a
+                                    href="{% url "core:post_share" post.id %}"> Share</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container">
+    <div class="row">
+        <div class="card m-auto">
+            <div class="card-body mt-2 mb-2">
+                <h2 class="card-title">
+                    No results                    
+                </h2>
+                <p class="card-text">
+                    There are no results matching: "{{query}}"
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

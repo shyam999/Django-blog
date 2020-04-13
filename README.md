@@ -5,14 +5,15 @@
 [![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/shyam999/django-blog/blob/master/LICENSE)
 # Django Blog
 
-## Features
+## Features Included
 - Registration & Authentication
-- Custom guest dashboard for CRUD operations
-- Rest Framework api
+- Custom guest dashboard
+- Search Functionality
 - Disquss for react and comments
+- Rest Framework api
 - Email Service for sharing content
 - Responsive, mobile-friendly design
-- Newsletter
+- Newsletter Services
 
 ## Installation
 **1.Setup Virtualenv**

@@ -64,7 +64,7 @@ def get_post_queryset(query=None):
     queries = query.split(' ')
     for q in queries:
         posts = Post.objects.filter(
-            Q(title__icontains=q) | Q(body__icontains=q)).distinct()
+            Q(title__icontains=q) | Q(content__icontains=q)).distinct()
         for post in posts:
             queryset.append(post)
     return list(set(queryset))
@@ -73,11 +73,12 @@ def get_post_queryset(query=None):
 def blog(request, category_slug=None):
     category = None
     categories = Category.objects.all()
+    posts = Post.objects.filter(created_date__lte=timezone.now()).order_by('created_date')
     query = ''
     if request.GET:
         query = request.GET['q']
         query = str(query)
-    posts = Post.objects.filter(get_post_queryset, reverse=True)
+        posts = sorted(get_post_queryset(query), reverse=True)
     paginator = Paginator(posts, 4)
     page = request.GET.get('page')
     posts = paginator.get_page(page)

@@ -9,11 +9,11 @@
 - Registration & Authentication
 - Custom guest dashboard
 - Search Functionality
-- Disquss for react and comments
-- Rest Framework api
-- Email Service for sharing content
-- Responsive, mobile-friendly design
 - Newsletter Services
+- Email Service for sharing
+- Disquss for react and comment
+- Rest Framework api
+- Responsive, mobile-friendly design
 
 ## Installation
 **1.Setup Virtualenv**

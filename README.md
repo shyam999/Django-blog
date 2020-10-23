@@ -15,7 +15,6 @@ Django-blog is an open-source blog management platform built on the Django Web F
 - Disquss for react and comment
 - Rest Framework api
 - Responsive, mobile-friendly design
-- Much more...
 
 ## Installation
 **1.Setup Virtualenv**
